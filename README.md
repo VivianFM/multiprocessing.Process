@@ -38,6 +38,38 @@ See [`example_multiprocessing.Process.py`](./example_multiprocessing.Process.py)
 - Processes do not share memory; data must be exchanged via `multiprocessing.Queue`, `Pipe`, `Manager`, or other IPC mechanisms.
 - Process startup is more resource-intensive than threads; consider `multiprocessing.Pool` for managing a fixed number of worker processes more efficiently.
 
+######################################
+
+### `Process` Parameters and Methods
+
+In the code snippet `Process(target=function_name, args=(arg1, arg2, ...))`, the `Process` class from the `multiprocessing` module is used to **create** a new process to run the specified function in parallel. Let’s break it down:
+
+1. **`target=`**  
+   This is the function that the new process will execute. The `target` argument specifies the function to be called in the new process.
+
+2. **`args=(...)`**  
+   This tuple contains the arguments that will be passed to the target function when the process is started.
+
+   The `args` tuple is used to provide the required input values for the target function when the process begins execution.
+
+### `.start()` Method
+
+- **Purpose**: It initiates the process, causing the `target` function (e.g., `function_name`) to begin executing in a new process.
+- **How it works**: When `.start()` is called, a new process is created, and the function specified in `target` starts running in that process. This operation is asynchronous, meaning the main program continues executing without waiting for the new process to complete.
+
+### `.join()` Method
+
+- **Purpose**: It causes the main program to wait for the process to finish before continuing. It ensures that the program doesn't exit until all processes have completed their work.
+- **How it works**: When `.join()` is called, the main program pauses at that point and waits for the associated process to finish. Once the process terminates, the program resumes execution.
+
+### Summary
+
+- **`Process(target=..., args=...)`**: This creates a new process that will execute the specified `target` function, passing the arguments in `args`.
+- **`.start()`**: This starts the process and allows it to execute in parallel.
+- **`.join()`**: This ensures that the main program waits for the process to finish before continuing.
+
+These methods work together to allow for concurrent processing in Python, making it easier to divide workloads across multiple CPU cores.
+
 ## Summary
 
 `multiprocessing.Process` is a robust abstraction for achieving parallelism in Python, particularly well-suited to CPU-intensive workloads. It provides a straightforward API for process creation and management, with important considerations for inter-process communication and resource overhead.
