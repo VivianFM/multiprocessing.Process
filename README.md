@@ -56,24 +56,10 @@ In the code snippet `Process(target=function_name, args=(arg1, arg2, ...))`, the
 
 - **Purpose**: It initiates the process, causing the `target` function (e.g., `function_name`) to begin executing in a new process.
 - **How it works**: When `.start()` is called, a new process is created, and the function specified in `target` starts running in that process. This operation is asynchronous, meaning the main program continues executing without waiting for the new process to complete.
+- Calling `.start()` is required to actually launch the process! If you create a Process object and never call .start(), the process is never executed—it's just an object sitting in memory.
 
 ### `.join()` Method
 
 - **Purpose**: It causes the main program to wait for the process to finish before continuing. It ensures that the program doesn't exit until all processes have completed their work.
 - **How it works**: When `.join()` is called, the main program pauses at that point and waits for the associated process to finish. Once the process terminates, the program resumes execution.
-
-### Summary
-
-- **`Process(target=..., args=...)`**: This creates a new process that will execute the specified `target` function, passing the arguments in `args`.
-- **`.start()`**: This starts the process and allows it to execute in parallel.
-- **`.join()`**: This ensures that the main program waits for the process to finish before continuing.
-
-These methods work together to allow for concurrent processing in Python, making it easier to divide workloads across multiple CPU cores.
-
-## Summary
-
-`multiprocessing.Process` is a robust abstraction for achieving parallelism in Python, particularly well-suited to CPU-intensive workloads. It provides a straightforward API for process creation and management, with important considerations for inter-process communication and resource overhead.
-
----
-
-Let me know if you'd like to extend this with sections on inter-process communication, performance benchmarking, or production deployment tips.
+- `.join()` is not mandatory, but it's crucial if you need to ensure the child processes finish before the main process proceeds (e.g., when collecting results, cleaning up resources, or timing execution).
