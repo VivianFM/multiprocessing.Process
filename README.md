@@ -30,7 +30,7 @@ Use `multiprocessing.Process` when:
 
 ## Practical example
 
-See [`example_argparse_usage.py`](./multiprocessing.Process.py) for a complete example.
+See [`example_multiprocessing.Process.py`](./example_multiprocessing.Process.py) for a complete example.
 
 ## Important Considerations
 
