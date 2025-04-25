@@ -30,7 +30,7 @@ Use `multiprocessing.Process` when:
 
 See [`example_multiprocessing.Process.py`](./example_multiprocessing.Process.py) for a complete example.
 
-### `Process` Parameters and Methods
+### `Process` Parameters
 
 In the code snippet `Process(target=function_name, args=(arg1, arg2, ...))`, the `Process` class from the `multiprocessing` module is used to **create** a new process to run the specified function in parallel. Let’s break it down:
 
@@ -42,14 +42,15 @@ In the code snippet `Process(target=function_name, args=(arg1, arg2, ...))`, the
 
    The `args` tuple is used to provide the required input values for the target function when the process begins execution.
 
-### `.start()` Method
+### `Process` Methods
+#### `.start()`
 
-- **Purpose**: It initiates the process, causing the `target` function (e.g., `function_name`) to begin executing in a new process.
+- **Purpose**: It **initiates the process**, causing the `target` function (e.g., `function_name`) to begin executing in a new process.
 - **How it works**: When `.start()` is called, a new process is created, and the function specified in `target` starts running in that process. This operation is asynchronous, meaning the main program continues executing without waiting for the new process to complete.
-- Calling `.start()` is required to actually launch the process! If you create a Process object and never call .start(), the process is never executed—it's just an object sitting in memory.
+> **Note:** Calling `.start()` **is required** to actually launch the process! If you create a Process object and never call `.start()`, the process is never executed—it's just an object sitting in memory.
 
-### `.join()` Method
+#### `.join()` 
 
-- **Purpose**: It causes the main program to wait for the process to finish before continuing. It ensures that the program doesn't exit until all processes have completed their work.
+- **Purpose**: It causes the **main program to wait** for the process to finish before continuing. It ensures that the program doesn't exit until all processes have completed their work.
 - **How it works**: When `.join()` is called, the main program pauses at that point and waits for the associated process to finish. Once the process terminates, the program resumes execution.
-- `.join()` is not mandatory, but it's crucial if you need to ensure the child processes finish before the main process proceeds (e.g., when collecting results, cleaning up resources, or timing execution).
+> **Note:** `.join()` is **not mandatory**, but it's crucial if you need to ensure the child processes finish before the main process proceeds (e.g., when collecting results, cleaning up resources, or timing execution).
