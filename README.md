@@ -56,4 +56,4 @@ In the code snippet `Process(target=function_name, args=(arg1, arg2, ...))`, the
 > **Note:** `.join()` is **not mandatory**, but it's crucial if you need to ensure the child processes finish before the main process proceeds (e.g., when collecting results, cleaning up resources, or timing execution).
 
 ## Summary
-The `.start()` method launches a subprocess while the main process continues executing; only when `.join()` is reached does the main process pause to wait for each subprocess to finish — note that subprocesses (e.g., process_1.start(); process_2.start()) run independently and do not wait for each other, only the main process is blocked by `.join()`.
+The `.start()` method launches a subprocess while the main process continues executing; only when `.join()` is reached does the main process pause to wait for each subprocess to finish — note that subprocesses (e.g., `process_1.start()`; `process_2.start()`) run independently and do not wait for each other, only the main process is blocked by `.join()`.
