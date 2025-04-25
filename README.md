@@ -57,3 +57,9 @@ In the code snippet `Process(target=function_name, args=(arg1, arg2, ...))`, the
 
 ## Summary
 The `.start()` method launches a subprocess while the main process continues executing; only when `.join()` is reached does the main process pause to wait for each subprocess to finish — note that subprocesses (e.g., `process_1.start()`; `process_2.start()`) run independently and do not wait for each other, only the main process is blocked by `.join()`.
+
+---
+
+## References
+
+- [Official Python `multiprocessing` Documentation](https://docs.python.org/3/library/multiprocessing.html)
